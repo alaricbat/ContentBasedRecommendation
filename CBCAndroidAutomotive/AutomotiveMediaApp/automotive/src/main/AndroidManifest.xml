@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".AutomotiveMediaApplication"
         android:allowBackup="true"
         android:appCategory="audio"
         android:icon="@mipmap/ic_launcher"

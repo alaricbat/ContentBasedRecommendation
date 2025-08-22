@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlinCompose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -71,6 +73,10 @@ dependencies {
     implementation(libs.androidx.media3.mediasession)
     implementation(libs.androidx.window)
     implementation(libs.androidx.car.app)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
