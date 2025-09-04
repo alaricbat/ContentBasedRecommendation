@@ -43,7 +43,8 @@ class ThemeStore private constructor(
     }
 
     override fun autoGeneratePrimaryDark(autoGenerate: Boolean): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putBoolean(ThemeStorePrefKeys.KEY_AUTO_GENERATE_PRIMARY_DARK, autoGenerate)
+        return this
     }
 
     override fun primaryColorDark(color: Int): ThemeStore {
@@ -129,63 +130,75 @@ class ThemeStore private constructor(
     }
 
     override fun textColorPrimary(color: Int): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putInt(ThemeStorePrefKeys.KEY_TEXT_COLOR_PRIMARY, color)
+        return this
     }
 
     override fun textColorPrimaryRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorPrimary(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun textColorPrimaryAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorPrimary(resolveColor(mContext, colorAttr))
     }
 
     override fun textColorPrimaryInverse(color: Int): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putInt(ThemeStorePrefKeys.KEY_TEXT_COLOR_PRIMARY_INVERSE, color)
+        return this
     }
 
     override fun textColorPrimaryInverseRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorPrimaryInverse(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun textColorPrimaryInverseAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorPrimaryInverse(resolveColor(mContext, colorAttr))
     }
 
     override fun textColorSecondary(color: Int): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putInt(ThemeStorePrefKeys.KEY_TEXT_COLOR_SECONDARY, color)
+        return this
     }
 
     override fun textColorSecondaryRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorSecondary(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun textColorSecondaryAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorSecondary(resolveColor(mContext, colorAttr))
     }
 
     override fun textColorSecondaryInverse(color: Int): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putInt(ThemeStorePrefKeys.KEY_TEXT_COLOR_SECONDARY_INVERSE, color)
+        return this
     }
 
     override fun textColorSecondaryInverseRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorPrimaryInverse(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun textColorSecondaryInverseAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return textColorPrimaryInverse(resolveColor(mContext, colorAttr))
     }
 
     override fun coloredStatusBar(colored: Boolean): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putBoolean(ThemeStorePrefKeys.KEY_APPLY_PRIMARY_DARK_STATUS_BAR, colored)
+        return this
     }
 
     override fun coloredNavigationBar(applyToNavBar: Boolean): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putBoolean(ThemeStorePrefKeys.KEY_APPLY_PRIMARY_NAVBAR, applyToNavBar)
+        return this
     }
 
     override fun commit() {
-        TODO("Not yet implemented")
+        mEditor.putLong(ThemeStorePrefKeys.VALUES_CHANGED, System.currentTimeMillis())
+            .putBoolean(ThemeStorePrefKeys.IS_CONFIGURED_KEY, true)
+            .commit()
     }
 
     companion object {

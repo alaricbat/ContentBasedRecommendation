@@ -30,6 +30,22 @@ interface ThemeStorePrefKeys {
 
         const val KEY_STATUS_BAR_COLOR = "status_bar_color"
 
+        const val KEY_TEXT_COLOR_PRIMARY = "text_color_primary"
+
+        const val KEY_TEXT_COLOR_PRIMARY_INVERSE = "text_color_primary_inverse"
+
+        const val KEY_TEXT_COLOR_SECONDARY = "text_color_secondary"
+
+        const val KEY_TEXT_COLOR_SECONDARY_INVERSE = "text_color_secondary_inverse"
+
+        const val KEY_APPLY_PRIMARY_DARK_STATUS_BAR = "apply_primary_dark_status_bar"
+
+        const val KEY_APPLY_PRIMARY_NAVBAR = "apply_primary_navbar"
+
+        const val VALUES_CHANGED = "values_changed"
+
+        const val IS_CONFIGURED_KEY = "is_configured"
+
     }
 
 }
