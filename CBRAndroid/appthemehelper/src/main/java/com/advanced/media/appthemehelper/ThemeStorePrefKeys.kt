@@ -28,6 +28,8 @@ interface ThemeStorePrefKeys {
 
         const val KEY_NAVIGATION_BAR_COLOR = "navigation_bar_color"
 
+        const val KEY_STATUS_BAR_COLOR = "status_bar_color"
+
     }
 
 }

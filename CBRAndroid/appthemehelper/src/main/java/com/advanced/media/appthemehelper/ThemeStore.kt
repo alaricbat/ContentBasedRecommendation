@@ -92,35 +92,40 @@ class ThemeStore private constructor(
     }
 
     override fun accentColorRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return accentColor(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun accentColorAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return accentColor(resolveColor(mContext, colorAttr))
     }
 
     override fun statusBarColor(color: Int): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putInt(ThemeStorePrefKeys.KEY_STATUS_BAR_COLOR, color)
+        return this
     }
 
     override fun statusBarColorRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return statusBarColor(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun statusBarColorAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return statusBarColor(resolveColor(mContext, colorAttr))
     }
 
     override fun navigationBarColor(color: Int): ThemeStore {
-        TODO("Not yet implemented")
+        mEditor.putInt(ThemeStorePrefKeys.KEY_NAVIGATION_BAR_COLOR, color)
+        return this
     }
 
     override fun navigationBarColorRes(colorRes: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return navigationBarColor(ContextCompat.getColor(mContext, colorRes))
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun navigationBarColorAttr(colorAttr: Int): ThemeStore {
-        TODO("Not yet implemented")
+        return navigationBarColor(resolveColor(mContext, colorAttr))
     }
 
     override fun textColorPrimary(color: Int): ThemeStore {
