@@ -270,6 +270,11 @@ class ThemeStore private constructor(
             return prefs(context).getBoolean(ThemeStorePrefKeys.KEY_AUTO_GENERATE_PRIMARY_DARK, true)
         }
 
+        @CheckResult
+        fun isConfigured(context: Context): Boolean {
+            return prefs(context).getBoolean(ThemeStorePrefKeys.IS_CONFIGURED_KEY, false)
+        }
+
         //Check Material Design 3
         fun isMD3Enabled(context: Context): Boolean {
             return PreferenceManager.getDefaultSharedPreferences(context)
