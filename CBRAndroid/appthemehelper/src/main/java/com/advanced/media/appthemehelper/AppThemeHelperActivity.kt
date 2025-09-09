@@ -1,17 +1,21 @@
-package com.advanced.media.mediaplayer.ui.theme.base
+package com.advanced.media.appthemehelper
 
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.advanced.media.appthemehelper.AppThemeHelper
 import kotlinx.coroutines.launch
 
-class ApplicationThemeHelperActivity : ComponentActivity() {
+open class AppThemeHelperActivity : ComponentActivity() {
 
-    private val TAG = ApplicationThemeHelperActivity::class.java.simpleName
+    companion object {
+        private val TAG = AppThemeHelperActivity::class.java.simpleName
+    }
 
     private var mUpdateTime = -1L // replace with your actual time-tracking logic
 
@@ -22,6 +26,9 @@ class ApplicationThemeHelperActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         mUpdateTime = System.currentTimeMillis()
         onThemeChanged()
+        setContent {
+            RenderContent()
+        }
         Log.d(TAG, "onCreate [OUT]")
     }
 
@@ -47,17 +54,25 @@ class ApplicationThemeHelperActivity : ComponentActivity() {
     }
 
     fun postRecreate() {
+        Log.d(TAG, "postRecreate [IN]")
         // Wait until lifecycle is at least STARTED before recreating
         lifecycleScope.launch {
+            Log.d(TAG, "[postRecreate][Thread]:- ${Thread.currentThread().name}")
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 if (AppThemeHelper.didThemeValuesChange(
-                        this@ApplicationThemeHelperActivity,
+                        this@AppThemeHelperActivity,
                         mUpdateTime
                 )) {
                     recreate()
                 }
             }
         }
+        Log.d(TAG, "postRecreate [OUT]")
+    }
+
+    @Composable
+    open fun RenderContent() {
+        //Do thing
     }
 
 }
