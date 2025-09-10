@@ -1,5 +1,6 @@
 package com.advanced.media.appthemehelper.common.views
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,6 +33,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.advanced.media.appthemehelper.R
 
+private const val TAG = "CenterAlignedTopAppBar"
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CenterAlignedTopAppBar(
@@ -41,6 +44,7 @@ fun CenterAlignedTopAppBar(
 
     // Controls expansion state of the search bar
     var expanded by rememberSaveable { mutableStateOf(false) }
+    var isDropdownMenuExpanded by remember { mutableStateOf(false) }
 
     CenterAlignedTopAppBar(
         title = {
@@ -104,7 +108,9 @@ fun CenterAlignedTopAppBar(
         actions = {
             IconButton (
                 onClick = {
+                    Log.d(TAG, "[IconButton][Menu][IN]")
                     //TODO update later
+                    Log.d(TAG, "[IconButton][Menu][OUT]")
                 }
             ) {
                 Icon(
@@ -112,14 +118,23 @@ fun CenterAlignedTopAppBar(
                     contentDescription = "Connect to Monitor Button."
                 )
             }
-            IconButton(
-               onClick = {
-                    //TODO update later
-               }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.MoreVert,
-                    contentDescription = "Configuration Button."
+            Box {
+                IconButton(
+                    onClick = {
+                        Log.d(TAG, "[IconButton][MoreVert][IN]")
+                        isDropdownMenuExpanded = true
+                        Log.d(TAG, "[IconButton][MoreVert][OUT]")
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "Configuration Button."
+                    )
+                }
+                DropdownMenu(
+                    isExpanded = remember { mutableStateOf(isDropdownMenuExpanded) },
+                    backgroundColor = Color.Black,
+                    contentColor = Color.Red
                 )
             }
         }

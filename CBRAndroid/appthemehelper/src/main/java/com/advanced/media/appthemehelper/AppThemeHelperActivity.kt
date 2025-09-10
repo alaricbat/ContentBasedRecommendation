@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -72,7 +71,9 @@ open class AppThemeHelperActivity : ComponentActivity() {
 
     @Composable
     open fun RenderContent() {
+        Log.d(TAG, "RenderContent[IN]")
         //Do thing
+        Log.d(TAG, "RenderContent[OUT]")
     }
 
 }

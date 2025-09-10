@@ -24,6 +24,8 @@ open class AppThemeHelperAppBarActivity: AppThemeHelperActivity() {
 
     @Composable
     override fun RenderContent() {
+        Log.d(TAG, "RenderContent[IN]")
+        super.RenderContent()
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar()
@@ -34,6 +36,7 @@ open class AppThemeHelperAppBarActivity: AppThemeHelperActivity() {
                 modifier = Modifier.Companion.padding(innerPadding)
             )
         }
+        Log.d(TAG, "RenderContent[OUT]")
     }
 
 }
